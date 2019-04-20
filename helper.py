@@ -65,7 +65,7 @@ def maybe_download_pretrained_vgg(data_dir):
 				'https://s3-us-west-1.amazonaws.com/udacity-selfdrivingcar/vgg.zip',
 				os.path.join(vgg_path, vgg_filename),
 				pbar.hook)
-
+#
 		# Extract vgg
 		print('Extracting model...')
 		zip_ref = zipfile.ZipFile(os.path.join(vgg_path, vgg_filename), 'r')
