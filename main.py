@@ -102,7 +102,7 @@ def layers(vgg_layer3_out, vgg_layer4_out, vgg_layer7_out, num_classes):
                                                strides= (8, 8),
                                                padding= 'same',
                                                kernel_initializer= tf.random_normal_initializer(stddev=0.01),
-                                               kernel_regularizer= tf.contrib.layers.l2_regularizer(1e-3))
+                                               kernel_regularizer= tf.contrib.layers.l2_regularizer(L2_REGULARIZER))
     return nn_last_layer
 tests.test_layers(layers)
 
@@ -145,23 +145,23 @@ def train_nn(sess, epochs, batch_size, get_batches_fn, train_op, cross_entropy_l
     """
     sess.run(tf.global_variables_initializer())
 
-    print("Training...")
-    print()
+    print("Training.....")
     for i in range(epochs):
-        print("EPOCH {} ...".format(i+1))
+        print("Epoch {} .....".format(i+1))
         for image, label in get_batches_fn(batch_size):
             _, loss = sess.run([train_op, cross_entropy_loss],
                                feed_dict={input_image: image,
-                                          correct_label: label, keep_prob: DROPOUT_PROB, learning_rate: LEARNING_RATE})
-            print("Loss: = {:.3f}".format(loss))
-        print()
+                                          correct_label: label,
+                                          keep_prob: DROPOUT_PROB,
+                                          learning_rate: LEARNING_RATE})
+            print("Loss = {:.3f}".format(loss))
 tests.test_train_nn(train_nn)
 
 
 def run():
     num_classes = 2
     image_shape = (160, 576)  # KITTI dataset uses 160x576 images
-    data_dir = './data'
+    data_dir = '/data'
     runs_dir = './runs'
     tests.test_for_kitti_dataset(data_dir)
 
