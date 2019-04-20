@@ -70,7 +70,7 @@ def layers(vgg_layer3_out, vgg_layer4_out, vgg_layer7_out, num_classes):
                                    kernel_regularizer= tf.contrib.layers.l2_regularizer(L2_REGULARIZER))
 
     layer4a_in1 = tf.layers.conv2d_transpose(layer7a_out, num_classes, 4,
-                                             strides= (2, 2),
+                                             2,
                                              padding= 'same',
                                              kernel_initializer= tf.random_normal_initializer(stddev=STDDEV),
                                              kernel_regularizer= tf.contrib.layers.l2_regularizer(L2_REGULARIZER))
@@ -84,7 +84,7 @@ def layers(vgg_layer3_out, vgg_layer4_out, vgg_layer7_out, num_classes):
     layer4a_out = tf.add(layer4a_in1, layer4a_in2)
 
     layer3a_in1 = tf.layers.conv2d_transpose(layer4a_out, num_classes, 4,
-                                             strides= (2, 2),
+                                             2,
                                              padding= 'same',
                                              kernel_initializer= tf.random_normal_initializer(stddev=STDDEV),
                                              kernel_regularizer= tf.contrib.layers.l2_regularizer(L2_REGULARIZER))
@@ -99,9 +99,9 @@ def layers(vgg_layer3_out, vgg_layer4_out, vgg_layer7_out, num_classes):
 
     # logits
     nn_last_layer = tf.layers.conv2d_transpose(layer3a_out, num_classes, 16,
-                                               strides= (8, 8),
+                                               8,
                                                padding= 'same',
-                                               kernel_initializer= tf.random_normal_initializer(stddev=0.01),
+                                               kernel_initializer= tf.random_normal_initializer(stddev=STDDEV),
                                                kernel_regularizer= tf.contrib.layers.l2_regularizer(L2_REGULARIZER))
     return nn_last_layer
 tests.test_layers(layers)
@@ -161,7 +161,7 @@ tests.test_train_nn(train_nn)
 def run():
     num_classes = 2
     image_shape = (160, 576)  # KITTI dataset uses 160x576 images
-    data_dir = '/data'
+    data_dir = './data'
     runs_dir = './runs'
     tests.test_for_kitti_dataset(data_dir)
 
