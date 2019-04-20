@@ -21,7 +21,7 @@ else:
 #  Set Hyperparameters
 # --------------------
 EPOCHS = 25
-BATCH_SIZE = 8
+BATCH_SIZE = 2
 L2_REGULARIZER = 1e-3
 STDDEV = 0.01
 LEARNING_RATE = 0.0001
