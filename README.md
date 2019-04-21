@@ -68,3 +68,47 @@ If you are unfamiliar with GitHub , Udacity has a brief [GitHub tutorial](http:/
 To learn about REAMDE files and Markdown, Udacity provides a free [course on READMEs](https://www.udacity.com/courses/ud777), as well. 
 
 GitHub also provides a [tutorial](https://guides.github.com/features/mastering-markdown/) about creating Markdown files.
+
+### Rubric
+
+#### Build the Neural Network
+
+1. Does the project load the pretrained vgg model?
+
+   Yes, project is loading pretrained `VGG` model. Link in `main.py` [line 30].
+
+2. Does the project learn the correct features from the images?
+
+   Yes, project learns correct features from the images. Link in `main.py` [line 58]
+
+3. Does the project optimize the neural network?
+
+   Yes, project uses Adams Optimizer for optimising and minimizing loss for the neural networks. Link in `main.py` [line 110]
+
+4. Does the project train the neural network?
+
+   Yes, project trains neural network for KITTI Dataset for `epoch=25` with `batch_size=2`, `learning_rate=0.0001` and `l2_regularizer=1e-3`. After training for `25 epochs`.
+
+
+#### Neural Network Training
+
+1. Does the project train the model correctly?
+
+   Yes, model loss decreases with every epochs. Initial loss for model was `1.490` which was reduced to `0.079` after `12 epochs` and further reduced to `0.35` after `25 epochs`.
+
+2. Does the project use reasonable hyperparameters?
+
+   Yes. Project uses following hyperparameters to correctly train a model.
+
+    | Hyperparameter      | Value  |
+    | ------------------- | ------ |
+    | Batch Size          | 2      |
+    | Epochs              | 25     |
+    | L2 Regularization   | 1e-3   |
+    | Standard Deviation  | 0.01   |
+    | Learning Rate       | 0.0001 |
+    | Dropout Probability | 0.5    |
+
+3. Does the project correctly label the road?
+
+   Yes. The results are available in the runs folder. 
